@@ -59,7 +59,7 @@ print(artist_id)
 
 #artist_id = 136975
 
-limit = 3
+limit = 50
 itunes_lookup_link = f'https://itunes.apple.com/lookup?id={artist_id}&entity=song&limit={limit}'
 
 response = requests.get(itunes_lookup_link)
