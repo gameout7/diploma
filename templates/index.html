@@ -1,18 +1,53 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}This is an example page{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}ArtistIdTable{% endblock %}
 
 {% block content %}
 
-<h1>Music band table:</h1>
+<h1>  Music artist {{ band|upper }} table:</h1>
+
+
+{{ wtf.quick_form(nameform) }}
+
+{{ wtf.quick_form(dbform) }}
 
 <table class="table table-bordered">
   <thead>
-    {% for key, value in test_list.items() %}
-    <tr>
-        <td> {{ key }} </th>
-        <td> {{ value }} </td>
+<!--     
+    <tr> 
+        <th> kind </th>
+        <th> collectionName </th>
+        <th> trackName </th>
+        <th> collectionPrice </th>
+        <th> trackPrice </th>
+        <th> primaryGenreName </th>
+        <th> trackCount </th>
+        <th> trackNumber </th>
+        <th> releaseDate </th>        
     </tr>
-{% endfor %}
+--> 
+<!--   Table head </td> --> 
+    {% for dict_item in songs[:1] %}
+        <tr>
+            {% for key in dict_item.keys() %}
+        
+        <th> {{ key }} </th>
+                
+            {% endfor%}
+        </tr>
+    {% endfor %}
+
+<!--   Table data </td> --> 
+    {% for dict_item in songs %}
+        <tr>
+        {% for value in dict_item.values() %}
+                    
+        <td> {{ value }} </td>
+                            
+        {% endfor%}
+                </tr>
+    {% endfor %}
   </thead>
 </table>
 {% endblock %}
