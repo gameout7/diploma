@@ -1,1 +1,0 @@
-SELECT * FROM music ORDER BY releasedate LIMIT 10;
