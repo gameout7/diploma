@@ -34,7 +34,7 @@ def create_table():
         cursor.execute(create_table_query)
                 
         connection.commit()
-        print("Table created")
+#        print("Table created")
     except (Exception, Error) as error:
         print("Failure", error)
     finally:
@@ -178,7 +178,8 @@ def get_from_table(limit='10'):
     return ans1
 
 create_table()
-artist_id = get_artist_id("beatles")                                      
-songs = get_artist_songs(artist_id, 50)
+#print(get_artist_id("beatles"))    
+
+#songs = get_artist_songs(artist_id, 50)
 #fill_table(songs)
 #print(get_from_table())
