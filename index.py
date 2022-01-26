@@ -19,11 +19,10 @@ class DbForm(FlaskForm):
     limit = StringField('Type number of rows', validators=[DataRequired()])
     submit = SubmitField('Get data from DB')
 
-band = 'beatles'
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    
+
+    band = 'beatles'    
     
     #artist_id = my_functions.get_artist_id(band)
     songs = my_functions.get_from_table()
@@ -38,11 +37,14 @@ def index():
         band = name
         
         my_functions.drop_table()
+        print("table droped")
         my_functions.create_table()
+        print("table created")
         artist_id = my_functions.get_artist_id(band)
-        songs = my_functions.get_artist_songs(artist_id, limit=500)
-        my_functions.fill_table(songs)
+        songs = my_functions.get_artist_songs(artist_id, limit=200)
+        my_functions.fill_table2(songs)
         songs = my_functions.get_from_table()
+        print("table created")
 
  # Get data from database   
     limit1 = None
@@ -53,7 +55,7 @@ def index():
         limit = limit1
         songs = my_functions.get_from_table(limit=limit)
         
-
+ 
     
     return render_template('index.html', songs=songs, band=band, nameform=nameform, dbform=dbform)
 
